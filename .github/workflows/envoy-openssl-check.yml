@@ -22,6 +22,7 @@ jobs:
           api_key: ${{ secrets.TF_API_KEY }}
           api_url: https://api.dev.testing-farm.io/v0.1
           compose: Fedora-41
-          tmt_path: ".tmt"
           tmt_plan_regex: "test-all-release"
           pull_request_status_name: "Test All (release)"
+          update_pull_request_status: "true"
+          create_issue_comment: "true"
