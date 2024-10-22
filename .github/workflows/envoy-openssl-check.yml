@@ -11,20 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: "Checkout ${{ github.event.pull_request.head.repo.full_name }}[${{ github.event.pull_request.head.ref }}]"
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
-      - run: pwd
-      - run: find . -ls
-
-      - name: Schedule test on Testing Farm
+      - name: "Test All (release)"
         uses: sclorg/testing-farm-as-github-action@v3
         with:
           api_key: ${{ secrets.TF_API_KEY }}
           api_url: https://api.dev.testing-farm.io/v0.1
           compose: Fedora-41
-          tmt_plan_regex: "utest"
-          pull_request_status_name: "utest"
+          tmt_path: ".tmt"
+          tmt_plan_regex: "test-all-release"
+          pull_request_status_name: "Test All (release)"
