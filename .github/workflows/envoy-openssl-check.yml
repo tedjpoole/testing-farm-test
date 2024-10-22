@@ -14,5 +14,7 @@ jobs:
         uses: sclorg/testing-farm-as-github-action@v3
         with:
           api_key: ${{ secrets.TF_API_KEY }}
+          api_url: https://api.dev.testing-farm.io/v0.1
+          compose: Fedora-41
           tmt_plan_regex: "utest"
           pull_request_status_name: "utest"
