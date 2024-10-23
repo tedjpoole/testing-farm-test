@@ -22,7 +22,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
-      - name: "build-and-test-release"
+      - name: build-and-test-release
+        id: build-and-test-release
         uses: sclorg/testing-farm-as-github-action@v3
         with:
           api_key: ${{ secrets.TF_API_KEY }}
@@ -33,3 +34,5 @@ jobs:
           pull_request_status_name: "build-and-test-release"
           create_issue_comment: true
           update_pull_request_status: true
+
+      - run: "echo '::notice::Testing Farm Logs: https://artifacts.osci.redhat.com/testing-farm/${{ steps.build-and-test-release.outputs.request_id }}'"
