@@ -32,7 +32,5 @@ jobs:
           tmt_path: "./openssl/ci"
           tmt_plan_regex: "build-and-test-release"
           pull_request_status_name: "build-and-test-release"
-          create_issue_comment: true
-          update_pull_request_status: true
 
       - run: "echo '::notice::Testing Farm Logs: https://artifacts.osci.redhat.com/testing-farm/${{ steps.build-and-test-release.outputs.request_id }}'"
