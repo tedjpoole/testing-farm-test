@@ -1,4 +1,4 @@
 summary: "build-and-test-release"
 execute:
     how: tmt
-    script: pwd && set && find /var/ARTIFACTS/ -ls && ../../ci/do_ci.sh release
+    script: ./ci/run_envoy_docker.sh ./ci/do_ci.sh release
