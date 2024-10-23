@@ -29,12 +29,12 @@ jobs:
           api_key: ${{ secrets.TF_API_KEY }}
           api_url: https://api.dev.testing-farm.io/v0.1
           compose: Fedora-41
-          tmt_path: "./openssl/ci"
           tmt_plan_regex: "build-and-test-release"
           pull_request_status_name: "build-and-test-release"
+
+      - run: echo ${{ steps.build-and-test-release.outputs.request_id }}
 
       - name: Add Comment
         uses: thollander/actions-comment-pull-request@v3
         with:
-          message: |
-            Testing Farm Logs: https://artifacts.osci.redhat.com/testing-farm/${{ steps.build-and-test-release.outputs.request_id }}
+          message: https://artifacts.osci.redhat.com/testing-farm/${{ steps.build-and-test-release.outputs.request_id }}
