@@ -1,4 +1,4 @@
-summary: "Test All (release)"
+summary: "build-and-test-release"
 execute:
     how: tmt
     script: ./ci/do_ci.sh release
