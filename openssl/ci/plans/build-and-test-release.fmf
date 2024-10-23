@@ -1,4 +1,4 @@
 summary: "build-and-test-release"
 execute:
     how: tmt
-    script: pwd && find ../.. && find / -name do_ci.sh && ../../ci/do_ci.sh release
+    script: pwd && set && find /var/ARTIFACTS/ -ls && ../../ci/do_ci.sh release
