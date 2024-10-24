@@ -10,4 +10,4 @@ prepare:
 
 execute:
     how: tmt
-    script: ./ci/run_envoy_docker.sh ./ci/do_ci.sh release
+    script: ENVOY_DOCKER_BUILD_DIR="$(pwd)/.build" ./ci/run_envoy_docker.sh ./ci/do_ci.sh release
