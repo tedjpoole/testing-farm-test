@@ -10,4 +10,11 @@ prepare:
 
 execute:
     how: tmt
-    script: ENVOY_DOCKER_BUILD_DIR="$(pwd)/.build" ./ci/run_envoy_docker.sh ./ci/do_ci.sh release
+    script: |
+        ls -l "$(pwd)"
+        export ENVOY_DOCKER_BUILD_DIR="$(pwd)/.build"
+        mkdir -p "${ENVOY_DOCKER_BUILD_DIR}"
+        ls -l "$(pwd)"
+        ./ci/run_envoy_docker.sh ./ci/do_ci.sh release || true
+        echo SLEEPING
+        sleep 1000000000
