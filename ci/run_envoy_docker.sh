@@ -12,6 +12,11 @@ echo "============================== dir =======================================
 find . -ls | grep -F -v ' ./.git/'
 echo "============================== dir ======================================="
 echo
+echo "============================ docker ======================================"
+systemctl status docker
+docker system info
+echo "============================ docker ======================================"
+echo
 echo "Launching do_ci.sh in docker now..."
 echo
 docker run --rm -t -v "$(dirname "$0")/..:/work" -w /work fedora sh -c "$*"

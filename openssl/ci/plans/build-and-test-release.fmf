@@ -1,8 +1,12 @@
 summary: "build-and-test-release"
 
 prepare:
-  - how: install
+  - name: packages
+    how: install
     package: [ docker ]
+  - name: services
+    how: shell
+    script: systemctl start docker
 
 execute:
     how: tmt
