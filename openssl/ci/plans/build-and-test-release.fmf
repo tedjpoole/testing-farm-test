@@ -1,4 +1,9 @@
 summary: "build-and-test-release"
+
+prepare:
+  - how: install
+    package: [ docker ]
+
 execute:
     how: tmt
     script: ./ci/run_envoy_docker.sh ./ci/do_ci.sh release
