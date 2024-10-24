@@ -19,4 +19,6 @@ echo "============================ docker ======================================
 echo
 echo "Launching do_ci.sh in docker now..."
 echo
+docker run --rm -t -v "$(dirname "$0")/..:/work" -w /work fedora sh -c "pwd"
+docker run --rm -t -v "$(dirname "$0")/..:/work" -w /work fedora sh -c "ls -la"
 docker run --rm -t -v "$(dirname "$0")/..:/work" -w /work fedora sh -c "$*"
