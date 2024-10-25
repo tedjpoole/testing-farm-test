@@ -11,6 +11,13 @@ prepare:
 execute:
     how: tmt
     script: |
+        pwd
+        SAVEWD="$(pwd)"
+        useradd envoyuser
+        su - envoyuser
+        pwd
+        cd "${SAVEWD}"
+        pwd
         ls -l "$(pwd)"
         export ENVOY_DOCKER_BUILD_DIR="$(pwd)/.build"
         mkdir -p "${ENVOY_DOCKER_BUILD_DIR}"
