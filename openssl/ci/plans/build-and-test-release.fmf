@@ -11,23 +11,26 @@ prepare:
 execute:
     how: tmt
     script: |
+        set -x
         pwd
         whoami
         id -u
         id -g
         SAVEWD="$(pwd)"
         useradd envoyuser
-        su - envoyuser
+        sudo -i -u envoyuser bash <<-EOF
+        set -x
         whoami
         id -u
         id -g
         pwd
         cd "${SAVEWD}"
         pwd
-        ls -l "$(pwd)"
+        ls -la "$(pwd)"
         export ENVOY_DOCKER_BUILD_DIR="$(pwd)/.build"
         mkdir -p "${ENVOY_DOCKER_BUILD_DIR}"
-        ls -l "$(pwd)"
-        ./openssl/run_envoy_docker.sh ./ci/do_ci.sh release || true
+        ls -la "$(pwd)"
+        ./openssl/run_envoy_docker.sh ./ci/do_ci.sh release
+        EOF
         echo SLEEPING
         sleep 1000000000
