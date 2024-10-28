@@ -13,6 +13,7 @@ execute:
     script: |
         set -x
         useradd envoyuser
+        usermod -aG docker envoyuser
         sudo -i -u envoyuser "$(pwd)/openssl/run_envoy_docker.sh" ./ci/do_ci.sh release || true
         echo SLEEPING
         sleep 1000000000
