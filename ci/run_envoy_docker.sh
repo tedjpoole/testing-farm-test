@@ -61,7 +61,7 @@ else
       "groupadd ${DOCKER_GROUP_ARGS[*]} -f envoygroup \
           && useradd -o --uid ${USER_UID} ${DOCKER_USER_ARGS[*]} --no-create-home --home-dir /build envoybuild \
           && usermod -a -G pcap envoybuild \
-          && ls -l / && chown envoybuild:envoygroup /build \
+          && chown envoybuild:envoygroup /build \
           && chown envoybuild /proc/self/fd/2 \
           && sudo -EHs -u envoybuild bash -c 'cd ${ENVOY_DOCKER_SOURCE_DIR} && $*'")
 fi
