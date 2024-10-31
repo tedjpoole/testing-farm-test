@@ -18,7 +18,9 @@ execute:
         chmod 644 ~/.ssh/authorized_keys
         ip a
         pwd
-        "$(pwd)/openssl/run_envoy_docker.sh" ./ci/do_ci.sh release || true
+        useradd envoyuser -G docker
+        export ENVOY_DOCKER_OPTIONS="--security-opt label:disable"
+        sudo -i -u envoyuser "$(pwd)/openssl/run_envoy_docker.sh" ./ci/do_ci.sh release || true
         ip a
         echo SLEEPING
         sleep 1000000000
