@@ -1,0 +1,17 @@
+summary: "build-and-test-release"
+
+prepare:
+  - name: packages
+    how: install
+    package: [ docker ]
+  - name: services
+    how: shell
+    script: systemctl start docker
+
+execute:
+    how: tmt
+    script: |
+        setenforce 0
+        useradd envoyuser -G docker
+        sudo -i -u envoyuser "$(pwd)/openssl/run_envoy_docker.sh" ./ci/do_ci.sh release
+
