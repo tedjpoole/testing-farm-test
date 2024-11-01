@@ -21,7 +21,7 @@ execute:
         setenforce 0
         chmod -R o+w .
         useradd envoyuser -G docker
-        sudo -i -u envoyuser "$(pwd)/openssl/run_envoy_docker.sh" ./ci/do_ci.sh release || true
+        sudo -i -u envoyuser ENVOY_DOCKER_BUILD_DIR=$(pwd)/.build $(pwd)/openssl/run_envoy_docker.sh ./ci/do_ci.sh release || true
         ip a
         echo SLEEPING
         sleep 1000000000
