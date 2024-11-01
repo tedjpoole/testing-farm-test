@@ -31,10 +31,3 @@ jobs:
           tmt_plan_regex: "build-and-test-release"
           pull_request_status_name: "build-and-test-release"
           update_pull_request_status: true
-
-      - run: echo ${{ steps.build-and-test-release.outputs.request_id }}
-
-      - name: Add Comment
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          message: https://artifacts.osci.redhat.com/testing-farm/${{ steps.build-and-test-release.outputs.request_id }}
