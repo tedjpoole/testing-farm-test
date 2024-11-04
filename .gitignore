@@ -22,7 +22,7 @@
 !\.yapfignore
 !\.zuul
 !\.zuul.yaml
-!\.fmf
+!\.tmt
 
 /bazel-*
 /mobile/bazel-*
